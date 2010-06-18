@@ -1,4 +1,7 @@
-require 'rubygems'
+require "rubygems"
+require "bundler"
+Bundler.setup
+
 require 'twibot' # our bot helper
 require 'active_record' # db
 require 'feedzirra' # feed helper

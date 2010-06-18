@@ -1,0 +1,49 @@
+--- 
+dependencies: 
+  feedzirra: 
+    group: 
+    - :default
+    version: ">= 0"
+  activerecord: 
+    group: 
+    - :default
+    version: = 2.3.5
+    require: 
+    - active_record
+  mysql: 
+    group: 
+    - :default
+    version: ">= 0"
+  twibot: 
+    group: 
+    - :default
+    version: ">= 0"
+specs: 
+- activesupport: 
+    version: 2.3.5
+- activerecord: 
+    version: 2.3.5
+- builder: 
+    version: 2.1.2
+- curb: 
+    version: 0.7.6
+- nokogiri: 
+    version: 1.4.2
+- loofah: 
+    version: 0.4.7
+- sax-machine: 
+    version: 0.0.15
+- feedzirra: 
+    version: 0.0.23
+- json: 
+    version: 1.4.3
+- mysql: 
+    version: 2.8.1
+- twitter4r: 
+    version: 0.3.2
+- twibot: 
+    version: 0.1.0
+hash: 81e0f8d7dad6e89f2258345f3fa77de81b01210c
+sources: 
+- Rubygems: 
+    uri: http://rubygems.org
