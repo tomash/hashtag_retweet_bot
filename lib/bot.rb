@@ -96,21 +96,16 @@ class HashtagRetweetBot
                     )
 
             if tweet.tweeted.blank?
-              origin = tweet.link.gsub(/^http.*com\//,"").gsub(/\/statuses\/\d*/,"")
-              # strip the whole tag at the end of the tweet (since it is just for tagging)
-              message = tweet.title.gsub(%r{#(#{@tag})\s*$}i, '').rstrip
-              # strip only the # anywhere else (since it is part of the tweet)
-              message = message.gsub(%r{#(#{@tag})}i, '\1')
-              if origin.size + message.size  <= 130
-                @client.update("RT @#{origin}: #{message}")
-              else
-                @client.update("RT @#{origin} tagged '#{@tag}': #{tweet.link}")
-              end
-              puts "#{Time.now.to_s(:long)}" # poor mans logging
+              id_extractor = /\d+$/ 
+              tid = id_extractor.match(tweet.twitter_id).to_s
+              @client.retweet(tid)
+              puts "retweeted #{tid} at #{Time.now.to_s(:long)}" # poor mans logging
               tweet.update_attribute(:tweeted, true)
             end
           end
-        rescue
+        rescue => exception
+          puts exception.to_s
+          #puts exception.backtrace
         end
         sleep(@seconds)
       end
