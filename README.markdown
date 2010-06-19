@@ -8,19 +8,28 @@ As an example, let's say you want to retweet every tweet found with the hashtag 
 
 ## Installation
 
-    gem install balinterdi-hashtag_retweet_bot --source http://gems.github.com
+    gem install hashtag_retweet_bot
 
 Create the database:
 
     mysqladmin create my_conference_db
 
-Create a directory where you will run the bot from, and a config directory with 2 files in it: _database.yml_ for your database settings and _bot.yml_ for the login/password of the twitter account.
+Create a directory where you will run the bot from, and a config directory with 2 files in it: _database.yml_ for your database settings and either
+* _oauth.yml_ to make the bot use OAuth (RECOMMENDED)
+* _bot.yml_ for the login/password of the twitter account (DEPRECATED)
 
     mkdir -p bot_for_my_conference/config
     cd config/bot_for_my_conference
-    touch database.yml bot.yml
+    touch database.yml
+    
+If you want to use OAuth, register a new application on Twitter and put in consumer key (token) and secret in _oauth.yml_:
+    consumer:
+      token: my_apps_consumer_key
+      secret: my_apps_consumer_secrets
+      
+Don't worry now about request and access token/secret pairs, the bot will guide you the first time you launch it. And every time access token/secret will become invalid and need re-creating (as of June 2010, Twitter is not expiring access tokens, but they can be invalidated by removing the app).
 
-Put the credentials for the twitter account in _bot.yml_:
+If you want to use HTTP Auth (it's DEPRECATED by Twitter and will be no longer supported after August 2010), put the credentials for the twitter account in _bot.yml_:
 
     login: my_conference_bot
     password: secret
@@ -63,5 +72,6 @@ Some twitterbots using hashtag_retweet_bot:
 ## Credits
 
 Original idea and script by [Mark Connell](http://github.com/mconnell) for Scotland on Rails 2009. Customization for Euruko '09, and some improvements by [Jaime Iniesta](http://github.com/jaimeiniesta). Some improvements and gemification by [Balint Erdi](http://github.com/balinterdi).
+Customization for Euruko '10 and further work (OAuth support, refactoring etc.) by [Tomasz Stachewicz](http://github.com/tomash) 
 
 Please send feedback and bug reports to <balint.erdi@gmail.com>

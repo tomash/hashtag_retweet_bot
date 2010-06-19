@@ -1,5 +1,0 @@
-source "http://rubygems.org"
-gem "activerecord", "2.3.5", :require => "active_record"
-gem "twibot"
-gem "feedzirra"
-gem "mysql"
